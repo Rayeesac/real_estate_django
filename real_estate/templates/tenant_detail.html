@@ -1,0 +1,38 @@
+{% extends 'form_base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-12 col-lg-12">
+			<div class="login-wrap p-4 p-md-5">
+				<h2 class="text-center my-3">Tenant Details</h2>
+				<h3 class="text-center my-3">{{ object.name }}</h3>
+				<div class="row">
+					<div class="col-12 my-3">
+						<div class="property-slider-wrap">
+							<div class="property-slider">
+								
+								<div class="property-item">
+									<img src="{{ object.image.url }}" alt="{{ object.name }}" class="img-fluid" />
+									<div class="property-content">
+										<div class="price mb-2">
+                      <span>Agreement End Date: {{ object.agreement_end_date }} </span>
+                      <br>
+                      <span>Monthly Rent Date: {{ object.monthly_rent_date }} </span>
+										</div>
+										<div>
+											<span class="city d-block mb-3">Proof : {{ object.document_proofs|capfirst }}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

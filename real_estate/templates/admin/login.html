@@ -1,0 +1,28 @@
+{% extends 'admin_base.html' %}
+{% load i18n %}
+{% block content %}
+  
+  <div class="hero">
+
+
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-lg-9 text-center">
+          <h1 class="heading aos-init aos-animate" data-aos="fade-up">Admin Login
+          </h1>
+          {% if form.errors %}
+            <p class="errornote">{% trans 'Please enter the correct email and password for a staff account. Note that both fields may be case-sensitive.' %}</p>
+          {% endif %}
+          <form action="{% url 'admin:login' %}" id="login-form" method="POST" class="mb-3 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+            {% csrf_token %}
+            <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" placeholder="Email" class="form-control px-4 my-3">
+
+            <input type="password" name="password" autocomplete="current-password" required="" id="id_password" placeholder="Password" class="form-control px-4 my-3">
+        
+            <input type="submit" class="btn btn-primary" value='login'>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

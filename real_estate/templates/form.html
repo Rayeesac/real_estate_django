@@ -1,0 +1,20 @@
+{% load widget_tweaks %}
+
+{% block content %}
+
+{{form.media}}
+
+{% for field in form %}
+    <div class="form-group">
+        {% render_field field class="form-control my-3" placeholder=field.label %}
+        {% if field.errors %}
+            {% for error in field.errors %}
+            <div class="invalid-feedback is-valid">
+                {{ error }}
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endfor %}
+
+{% endblock %}

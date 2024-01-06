@@ -1,0 +1,51 @@
+{% extends 'form_base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-8">
+            <div class="login-wrap p-4 p-md-5">
+                <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="fa fa-user-o"></span>
+                </div>
+                
+                <h3 class="text-center my-4">Add new Tenant</h3>
+                <form method="POST" class="task-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% include "form.html" %}
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script>
+                        $(document).ready(function () {
+                            // Initial population of unit options based on the selected property
+                            updateUnitOptions();
+                
+                            // Update unit options when the property selection changes
+                            $('#id_property').change(function () {
+                                updateUnitOptions();
+                            });
+                
+                            function updateUnitOptions() {
+                                var propertyId = $('#id_property').val();
+                                var unitSelect = $('#id_unit');
+                
+                                unitSelect.empty();
+                
+                                $.ajax({
+                                    url: '/get_units/',  
+                                    data: {property_id: propertyId},
+                                    success: function (data) {
+                                        $.each(data, function (key, value) {
+                                            unitSelect.append($('<option></option>').attr('value', value.id).text(value.name));
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    </script>
+                    <input type="submit" class="btn btn-primary px-3 rounded text-right" value="Add Tenant">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

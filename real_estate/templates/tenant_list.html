@@ -1,0 +1,52 @@
+{% extends 'form_base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-12 col-lg-12">
+			<div class="login-wrap p-4 p-md-5">
+				
+				<h3 class="text-center my-4">Tenant List</h3>
+				
+				<div class="row">
+					{% if object_list %}
+          {% for tenant in object_list %}
+						<div class="col-6 my-3">
+							<div class="property-slider-wrap">
+								<div class="property-slider">
+
+
+									<div class="property-item">
+                    <img src="{{ tenant.image.url }}" alt="{{ property.name }}" class="img-fluid" />
+										
+										<div class="property-content">
+											<div class="price mb-2">
+												<span>{{ tenant.name }}</span>
+											</div>
+											<div>
+												<span class="city d-block mb-3">{{ tenant.address }}</span>
+												
+												<a href="{% url 'tenant-detail' tenant.id %}"
+												class="btn btn-primary py-2 px-3"
+												>See details</a
+												>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					
+						{% endfor %}	
+					{% else %}
+						<h3 class="text-muted">No Tenants available</h3>
+					{% endif %}
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
