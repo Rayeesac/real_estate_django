@@ -4,13 +4,13 @@
 Clone Git
 ----------
 
-git clone https://github.com/Rayeesac/emp-ecommerce-dj-rest-api.git
+git clone https://github.com/Rayeesac/real_estate_django.git
 
 Run Docker 
 ----------
 
 ```
-cd emp-ecommerce-dj-rest-api/ && docker-compose -f docker-compose.yml up -d --build
+cd real_estate_django/ && docker-compose -f docker-compose.yml up -d --build
 ```
 
 Restore Database
